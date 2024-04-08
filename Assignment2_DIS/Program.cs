@@ -256,9 +256,9 @@ namespace ISM6225_Spring_2024_Assignment_2
                             x.Add(new List<int> { nums[i], nums[lt], nums[rt] });
 
                             // ignoring the duplicates 
-                            while (l < r && nums[lt] == nums[lt + 1])
+                            while (lt < rt && nums[lt] == nums[lt + 1])
                                 lt++;
-                            while (l < r && nums[rt] == nums[rt - 1])
+                            while (lt < rt && nums[rt] == nums[rt - 1])
                                 rt--;
 
 
@@ -268,12 +268,12 @@ namespace ISM6225_Spring_2024_Assignment_2
                         // Incresing the sum
                         else if (sum < 0)
                         {
-                            l++;
+                            lt++;
                         }
                         // Decreasing the sum
                         else
                         {
-                            r--;
+                            rt--;
                         }
                     }
                 }
@@ -381,18 +381,18 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                int decimal = 0; // defining the decimal 
-                int base = 1; // defining the base value
+                int deci = 0; // defining the decimal 
+                int b = 1; // defining the base value
 
                 while (binary > 0) // Iterate through the binary digits
                 {
                     int lastvalue = binary % 10; // calculating the last digit 
                     binary = binary / 10; // Removing the last digit 
-                    decimal += lastvalue * base; // Multiplying the last digit and adding it to the decimal value
-                    base *= 2; // Increasing the base value
+                    deci += lastvalue * b; // Multiplying the last digit and adding it to the decimal value
+                    b *= 2; // Increasing the base value
                 }
 
-                return decimal;
+                return deci;
             }
             catch (Exception)
             {
@@ -500,7 +500,7 @@ namespace ISM6225_Spring_2024_Assignment_2
                 // Sorting the array
                 Array.Sort(nums);
 
-                for (int x = nums.Length - 1; x >= 2; x
+                for (int x = nums.Length - 1; x >= 2; x++)
                 {
                     // Checking the possibility to form a triangle
                     if (nums[x - 2] + nums[x - 1] > nums[x])
